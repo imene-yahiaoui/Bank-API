@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/argentBankLogo.png";
-import SignIn from "../../components/signIn"
+import SignIn from "../../components/signIn";
 import "./style.css";
 
 const Header = () => {
@@ -15,7 +14,7 @@ const Header = () => {
         ></img>
         <h1 className="sr-only">Argent Bank</h1>
       </Link>
-      <SignIn/>
+      <SignIn />
     </nav>
   );
 };

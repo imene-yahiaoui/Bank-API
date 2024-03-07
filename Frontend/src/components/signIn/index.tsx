@@ -1,11 +1,10 @@
-import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const user = false;
-  const userName = "imene"
+  const userName = "imene";
   //finction for SignIn
   function Singin() {
     navigate("/login");

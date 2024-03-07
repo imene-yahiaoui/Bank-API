@@ -4,7 +4,16 @@ import Image1 from "../../assets/images/icon-chat.png";
 import Image2 from "../../assets/images/icon-money.png";
 import Image3 from "../../assets/images/icon-security.png";
 import "./style.css";
-const datas = [
+
+interface FeatureData {
+  id: number;
+  img: string;
+  title: string;
+  text: string;
+}
+
+
+const datas:FeatureData[] = [
   {
     id: 1,
     img: Image1,
