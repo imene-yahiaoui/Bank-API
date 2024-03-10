@@ -1,15 +1,9 @@
-import React, { useNavigate } from "react-router-dom";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./style.css";
 
-interface LoginFormProps {
-  email: string;
-  password: string;
-  errorUser: boolean;
-  error: boolean;
-}
-
-const LoginForm: React.FC<LoginFormProps> = () => {
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorUser, setErrorUser] = useState(false);
@@ -27,7 +21,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       }
       setTimeout(msgDelet, 30000);
     }
-   const item = { email, password };
+    const item = { email, password };
 
     let result = await fetch("url", {
       method: "POST",
@@ -40,7 +34,8 @@ const LoginForm: React.FC<LoginFormProps> = () => {
     result = await result.json();
     if (result.status === 200) {
       navigate("/profile");
-      localStorage.setItem("token", result.body.token);
+
+      localStorage.setItem("token", result?.body?.token || "");
 
       const token = localStorage.getItem("token");
       const response = await fetch("url profil", {
