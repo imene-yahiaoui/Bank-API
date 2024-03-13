@@ -1,10 +1,14 @@
+import { useDispatch, useSelector } from "react-redux";
+import { body, logout, selectUser } from "../../helpers/features/userSlice.js";
 import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 
 const SignIn = () => {
   const navigate = useNavigate();
-  const user = false;
-  const userName = "imene";
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const infos = useSelector(body);
+  const userName = infos.payload?.user?.body?.body?.firstName;
   //finction for SignIn
   function Singin() {
     navigate("/login");
@@ -12,6 +16,10 @@ const SignIn = () => {
   //finction for Singout
   function Singout() {
     navigate("/");
+    dispatch(logout());
+  }
+  if (!user) {
+    localStorage.removeItem("token");
   }
 
   return !user ? (

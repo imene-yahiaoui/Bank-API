@@ -1,7 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable no-inner-declarations */
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./style.css";
+import { useDispatch } from "react-redux";
+import { login } from "../../helpers/features/userSlice";
+import { body } from "../../helpers/features/userSlice";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -9,21 +12,21 @@ const LoginForm = () => {
   const [errorUser, setErrorUser] = useState(false);
   const [error, setError] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   async function log(e) {
     e.preventDefault();
     //empty
     if (email.length === 0 || password.length === 0) {
       setError(true);
-      // eslint-disable-next-line no-inner-declarations
-      function msgDelet() {
+      function msgdelet() {
         setError(false);
       }
-      setTimeout(msgDelet, 30000);
+      setTimeout(msgdelet, 30000);
     }
     const item = { email, password };
 
-    let result = await fetch("url", {
+    let result = await fetch("http://localhost:3001/api/v1/user/login", {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -35,26 +38,40 @@ const LoginForm = () => {
     if (result.status === 200) {
       navigate("/profile");
 
-      localStorage.setItem("token", result?.body?.token || "");
+      localStorage.setItem("token", result.body.token);
 
+      dispatch(
+        login({
+          user: item,
+        })
+      );
+
+      //concte avec les info d'utilisateur
       const token = localStorage.getItem("token");
-      const response = await fetch("url profil", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-          accept: "application/json",
-        },
-      });
+      const response = await fetch(
+        "http://localhost:3001/api/v1/user/profile",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            accept: "application/json",
+          },
+        }
+      );
       const profile = await response.json();
-
+      console.log(" profile.status", profile.status);
       if (profile.status === 200) {
-        //som code to redux
+        console.log(" profile.body", profile.body);
+        dispatch(
+          body({
+            body: profile.body,
+          })
+        );
       }
     } else {
       setErrorUser(true);
       setEmail("");
       setPassword("");
-      // eslint-disable-next-line no-inner-declarations
       function deletError() {
         setErrorUser(false);
       }
@@ -104,5 +121,4 @@ const LoginForm = () => {
     </form>
   );
 };
-
 export default LoginForm;

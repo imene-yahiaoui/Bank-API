@@ -1,6 +1,6 @@
 import Header from "./containers/header";
 import Footer from "./containers/footer";
-import RoutesPath from "./pages/helpers/routesPath";
+import RoutesPath from "./helpers/routesPath";
 
 import "./App.css";
 
