@@ -3,16 +3,13 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { body } from "../../helpers/features/userSlice";
 import { useDispatch } from "react-redux";
+import { editUserNameAPT } from "../../helpers/services/api";
 import "./style.css";
 
 const EditUser = ({ closeModal }) => {
   const infos = useSelector(body);
-  const userName = infos.payload?.user?.body?.body?.userName;
-
   const firstNameDefult = infos.payload?.user?.body?.body?.firstName;
- 
   const lastNameDefult = infos.payload?.user?.body?.body?.lastName;
- 
   const [firstName, setFirstName] = useState(firstNameDefult);
   const [lastName, setLastName] = useState(lastNameDefult);
   const token = localStorage.getItem("token");
@@ -20,28 +17,12 @@ const EditUser = ({ closeModal }) => {
 
   async function Update(e) {
     e.preventDefault();
-    console.log(userName);
-    let editName = await fetch("http://localhost:3001/api/v1/user/profile", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-        accept: "application/json",
-      },
-
-      body: JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-      }),
-    });
-
-    editName = await editName.json();
-    console.log("editName.status", editName.status);
-    if (editName.status === 200) {
-      console.log("editName.body", editName.body);
+    const ediUserName = await editUserNameAPT(token, firstName, lastName);
+    console.log("ediUserName", ediUserName);
+    if (ediUserName.status === 200) {
       dispatch(
         body({
-          body: editName.body,
+          body: ediUserName.body,
         })
       );
     }

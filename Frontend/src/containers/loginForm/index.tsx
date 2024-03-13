@@ -5,6 +5,7 @@ import "./style.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../helpers/features/userSlice";
 import { body } from "../../helpers/features/userSlice";
+import { loginAPI, getProfileAPI } from "../../helpers/services/api";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ const LoginForm = () => {
 
   async function log(e) {
     e.preventDefault();
-    //empty
+
     if (email.length === 0 || password.length === 0) {
       setError(true);
       function msgdelet() {
@@ -24,44 +25,24 @@ const LoginForm = () => {
       }
       setTimeout(msgdelet, 30000);
     }
-    const item = { email, password };
 
-    let result = await fetch("http://localhost:3001/api/v1/user/login", {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(item),
-    });
-    result = await result.json();
-    if (result.status === 200) {
+    const { status, body: resultBody } = await loginAPI(email, password);
+
+    if (status === 200) {
       navigate("/profile");
 
-      localStorage.setItem("token", result.body.token);
+      localStorage.setItem("token", resultBody.token);
 
       dispatch(
         login({
-          user: item,
+          user: { email, password },
         })
       );
 
-      //concte avec les info d'utilisateur
       const token = localStorage.getItem("token");
-      const response = await fetch(
-        "http://localhost:3001/api/v1/user/profile",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${token}`,
-            accept: "application/json",
-          },
-        }
-      );
-      const profile = await response.json();
-      console.log(" profile.status", profile.status);
+      const profile = await getProfileAPI(token);
+
       if (profile.status === 200) {
-        console.log(" profile.body", profile.body);
         dispatch(
           body({
             body: profile.body,
