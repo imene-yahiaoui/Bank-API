@@ -5,8 +5,8 @@ import NotFound from "../../pages/notFound";
 import User from "../../pages/user";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice.js";
-import ProtectrdRoute from "../protectrdRoute";
-import Protect from "../protect";
+import ProtectedProfileRoute from "../protectionRoute/protectedProfileRoute";
+import ProtectedLoginRoute from "../protectionRoute/protectedLoginRoute";
 const RoutesPath = () => {
   const user = useSelector(selectUser);
 
@@ -18,19 +18,19 @@ const RoutesPath = () => {
         <Route
           path="/login"
           element={
-            <Protect user={user}>
+            <ProtectedLoginRoute user={user}>
               {" "}
               <Login />
-            </Protect>
+            </ProtectedLoginRoute>
           }
         />
         <Route
           path="/profile"
           element={
-            <ProtectrdRoute user={user}>
+            <ProtectedProfileRoute user={user}>
               {" "}
               <User />{" "}
-            </ProtectrdRoute>
+            </ProtectedProfileRoute>
           }
         />
       </Routes>
