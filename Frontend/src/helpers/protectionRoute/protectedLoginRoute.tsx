@@ -1,11 +1,20 @@
-import { Navigate } from "react-router-dom";
 import React from "react";
+import { Navigate } from "react-router-dom";
 
-const ProtectedLoginRoute = ({ user, children }) => {
+interface ProtectedLoginRouteProps {
+  user: { email: string; password: string };
+  children: React.ReactNode;
+}
+
+const ProtectedLoginRoute: React.FC<ProtectedLoginRouteProps> = ({
+  user,
+  children,
+}) => {
   if (user) {
     return <Navigate to="/profile" />;
   }
 
-  return children;
+  return <>{children}</>;
 };
+
 export default ProtectedLoginRoute;

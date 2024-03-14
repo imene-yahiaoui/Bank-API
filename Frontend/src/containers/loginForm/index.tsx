@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import React,{ useState } from "react";
 import "./style.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../helpers/features/userSlice";
@@ -15,7 +15,7 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  async function log(e) {
+  async function log(e: React.SyntheticEvent) {
     e.preventDefault();
 
     if (email.length === 0 || password.length === 0) {

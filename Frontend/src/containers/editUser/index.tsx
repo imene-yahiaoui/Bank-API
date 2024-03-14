@@ -1,4 +1,5 @@
-import React from "react";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+ import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { body } from "../../helpers/features/userSlice";
@@ -6,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { editUserNameAPT } from "../../helpers/services/api";
 import "./style.css";
 
-const EditUser = ({ closeModal }) => {
+const EditUser =  ({ closeModal }: { closeModal: any }) => {
   const infos = useSelector(body);
   const firstNameDefult = infos.payload?.user?.body?.body?.firstName;
   const lastNameDefult = infos.payload?.user?.body?.body?.lastName;
@@ -15,7 +16,7 @@ const EditUser = ({ closeModal }) => {
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
 
-  async function Update(e) {
+  async function Update(e : React.SyntheticEvent) {
     e.preventDefault();
     const ediUserName = await editUserNameAPT(token, firstName, lastName);
     console.log("ediUserName", ediUserName);

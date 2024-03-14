@@ -8,7 +8,7 @@ const SignIn = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const infos = useSelector(body);
-  const userName = infos.payload?.user?.body?.body?.firstName;
+  const userName = infos.payload?.user?.body?.body?.userName;
   //finction for SignIn
   function Singin() {
     navigate("/login");

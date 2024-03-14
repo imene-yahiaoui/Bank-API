@@ -1,5 +1,5 @@
 import "./style.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { body } from "../../helpers/features/userSlice.js";
 import EditUser from "../editUser";
@@ -11,7 +11,7 @@ const UserName = () => {
   const lastName = infos.payload?.user?.body?.body?.lastName;
   const [open, setOpen] = useState(false);
 
-  function edit(e) {
+  function edit(e: React.SyntheticEvent) {
     e.preventDefault();
     setOpen(true);
   }
@@ -20,10 +20,8 @@ const UserName = () => {
     <EditUser closeModal={setOpen} />
   ) : (
     <div className="Userheader">
-      <h1>
-        Welcome back
-        </h1>
-        <h1 className="Userheader capitalizeName">
+      <h1>Welcome back</h1>
+      <h1 className="Userheader capitalizeName">
         {`${firstName} ${lastName} ! `}
       </h1>
 

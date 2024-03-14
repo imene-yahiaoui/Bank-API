@@ -1,5 +1,12 @@
 import "./style.css";
-const Account = ({ title, amount, description }) => {
+
+interface AccountProps {
+  title: string;
+  amount: string;
+  description: string;
+}
+
+const Account: React.FC<AccountProps> = ({ title, amount, description }) => {
   return (
     <section className="account">
       <div className="account-content-wrapper">

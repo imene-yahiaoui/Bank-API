@@ -9,6 +9,7 @@ import ProtectedProfileRoute from "../protectionRoute/protectedProfileRoute";
 import ProtectedLoginRoute from "../protectionRoute/protectedLoginRoute";
 const RoutesPath = () => {
   const user = useSelector(selectUser);
+  console.log(user,"user")
 
   return (
     <div>

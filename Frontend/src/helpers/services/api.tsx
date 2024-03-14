@@ -1,4 +1,4 @@
-export async function loginAPI(email, password) {
+export async function loginAPI(email :string, password:string) {
   const item = { email, password };
 
   const result = await fetch("http://localhost:3001/api/v1/user/login", {
@@ -13,7 +13,7 @@ export async function loginAPI(email, password) {
   return await result.json();
 }
 
-export async function getProfileAPI(token) {
+export async function getProfileAPI(token :string  | null) {
   const response = await fetch("http://localhost:3001/api/v1/user/profile", {
     method: "POST",
     headers: {
@@ -25,7 +25,7 @@ export async function getProfileAPI(token) {
   return await response.json();
 }
 
-export async function editUserNameAPT(token, firstName, lastName) {
+export async function editUserNameAPT(token :string  | null, firstName :string, lastName:string) {
   const response = await fetch("http://localhost:3001/api/v1/user/profile", {
     method: "PUT",
     headers: {
