@@ -8,7 +8,7 @@ const SignIn = () => {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
   const infos = useSelector(body);
-  const userName = infos.payload?.user?.body?.body?.userName;
+  const firstName = infos.payload?.user?.body?.body?.firstName;
   //finction for SignIn
   function Singin() {
     navigate("/login");
@@ -33,7 +33,7 @@ const SignIn = () => {
     <div className="logout">
       <Link className="nameUser" to="/profile">
         <i className="fa fa-user-circle"></i>
-        <p className="user name">{userName}</p>
+        <p className="user name">{firstName}</p>
       </Link>
       <button onClick={Singout} className="main-nav-item">
         <i className="fa fa-sign-out"></i>
