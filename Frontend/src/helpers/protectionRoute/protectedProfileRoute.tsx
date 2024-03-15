@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import React from "react";
 interface ProtectedProfileRouteProps {
-  user: { email: string; password: string };
+  user: { email: string; password: string } | null;
   children: React.ReactNode;
 }
 

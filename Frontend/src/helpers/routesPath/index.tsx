@@ -8,8 +8,10 @@ import { selectUser } from "../features/userSlice.js";
 import ProtectedProfileRoute from "../protectionRoute/protectedProfileRoute";
 import ProtectedLoginRoute from "../protectionRoute/protectedLoginRoute";
 const RoutesPath = () => {
-  const user = useSelector(selectUser);
-  console.log(user,"user")
+  type UserProps = { email: string; password: string };
+
+  const user: UserProps | null = useSelector(selectUser);
+  console.log(user, "user");
 
   return (
     <div>

@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 
 interface ProtectedLoginRouteProps {
-  user: { email: string; password: string };
+  user: { email: string; password: string } | null;
   children: React.ReactNode;
 }
 

@@ -6,10 +6,8 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./app/store";
 import { PersistGate } from "redux-persist/integration/react";
 
-const root = document.getElementById("root"); // Utiliser document.getElementById
+const root = document.getElementById("root");
 if (root) {
-  
-  // Vérifier si root est défini
   ReactDOM.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
