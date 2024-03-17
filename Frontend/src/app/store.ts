@@ -11,10 +11,15 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, useReducer);
 
-export const store   = configureStore({
+export const store = configureStore({
   reducer: {
     user: persistedReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["persist/PERSIST"],
+      },
+    }).concat(thunk),
 });
 export const persistor = persistStore(store);
