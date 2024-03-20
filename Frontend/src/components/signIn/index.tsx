@@ -1,14 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { body, logout, selectUser } from "../../helpers/features/userSlice.js";
+import { body, logout, selectUser } from "../../helpers/features/userSlice.ts";
 import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
-  const dispatch = useDispatch();
   const infos = useSelector(body);
+  console.log(infos);
   const firstName = infos.payload?.user?.body?.body?.firstName;
+  const dispatch = useDispatch();
+
   //finction for SignIn
   function Singin() {
     navigate("/login");

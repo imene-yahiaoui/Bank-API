@@ -12,10 +12,11 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [errorUser, setErrorUser] = useState(false);
   const [error, setError] = useState(false);
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  async function log(e: React.SyntheticEvent) {
+  async function log(e: React.SyntheticEvent){
     e.preventDefault();
 
     if (email.length === 0 || password.length === 0) {
@@ -59,10 +60,10 @@ const LoginForm = () => {
       setTimeout(deletError, 3000);
     }
   }
-
+ 
   return (
     <form>
-      <div className="input-wrapper">
+      <div className="input-wrapper" >
         <label htmlFor="username">Username</label>
         <input
           id="username"

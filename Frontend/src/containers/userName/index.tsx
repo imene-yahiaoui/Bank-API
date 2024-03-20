@@ -1,13 +1,12 @@
 import "./style.css";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { body } from "../../helpers/features/userSlice.js";
+import { body } from "../../helpers/features/userSlice.ts";
 import EditUser from "../editUser";
 
 const UserName = () => {
   const infos = useSelector(body);
   const firstName = infos.payload?.user?.body?.body?.firstName;
-
   const lastName = infos.payload?.user?.body?.body?.lastName;
   const [open, setOpen] = useState(false);
 

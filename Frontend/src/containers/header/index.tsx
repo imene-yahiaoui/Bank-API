@@ -12,7 +12,9 @@ const Header = () => {
           src={logo}
           alt="Argent Bank Logo"
         ></img>
-        <h1 className="sr-only">Argent Bank</h1>
+        <h1 data-testid="my-component" className="sr-only">
+          Argent Bank
+        </h1>
       </Link>
       <SignIn />
     </nav>

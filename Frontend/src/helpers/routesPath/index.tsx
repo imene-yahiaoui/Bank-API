@@ -4,7 +4,7 @@ import Login from "../../pages/login";
 import NotFound from "../../pages/notFound";
 import User from "../../pages/user";
 import { useSelector } from "react-redux";
-import { selectUser } from "../features/userSlice.js";
+import { selectUser } from "../features/userSlice.ts";
 import ProtectedProfileRoute from "../protectionRoute/protectedProfileRoute";
 import ProtectedLoginRoute from "../protectionRoute/protectedLoginRoute";
 const RoutesPath = () => {

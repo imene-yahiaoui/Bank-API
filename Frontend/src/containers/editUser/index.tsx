@@ -2,7 +2,7 @@
  import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { body } from "../../helpers/features/userSlice";
+import { body } from "../../helpers/features/userSlice.ts";
 import { useDispatch } from "react-redux";
 import { editUserNameAPT } from "../../helpers/services/api";
 import "./style.css";
