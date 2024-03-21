@@ -1,30 +1,84 @@
-# React + TypeScript + Vite
+# Projet Argent Bank 🏦
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Contexte** 🌍
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Ce projet concerne la création d'une application pour Argent Bank, une nouvelle banque en pleine expansion
 
-- Configure the top-level `parserOptions` property like this:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+**Objectifs du Projet** 🎯
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+
+# Le projet est divisé en deux phases principales :
+
+
+
+# -Phase 1: Authentification des Utilisateurs 🔐
+
+
+Dans cette phase, nous créerons une application web permettant aux clients de se connecter et de gérer leur profil. Les fonctionnalités attendues sont :
+
+-Visiter la page d'accueil
+
+-Se connecter au système
+
+-Se déconnecter du système
+
+
+-Accéder aux informations du profil après une connexion réussie
+
+Modifier le profil et mettre à jour les données dans la base de données
+
+
+# -Phase 2 : Transactions 💸
+
+
+La phase 2 impliquera la spécification des endpoints d'API pour les transactions. Les fonctionnalités à implémenter incluent :
+
+ -Visualiser les transactions par compte pour le mois en cours
+
+ -Afficher les détails d'une transaction
+
+ -Ajouter, modifier ou supprimer des informations sur une transaction
+ 
+
+**Technologies Utilisées** 💻
+
+
+***Côté Frontend***
+
+🌐 Vite: Un bundler rapide pour le développement web.
+
+
+⚛️ React: La bibliothèque JavaScript pour la construction d'interfaces utilisateur interactives.
+
+
+📜 TypeScript: Un langage de programmation typé pour améliorer la robustesse du code.
+
+
+💼 Redux: Gestion d'état prévisible pour les applications JavaScript.
+
+
+
+# -Installation et Exécution 🚀
+
+
+Pour installer et exécuter le projet, suivez ces étapes :
+
+Clonez ce dépôt GitHub sur votre ordinateur.
+
+
+***Côté Frontend***
+
+-Accédez au répertoire du projet dans votre terminal : cd frontend
+
+-Exécutez npm install ou  pour installer les dépendances.
+
+-Lancez l'application en exécutant npm run dev .
+
+Ouvrez votre navigateur et accédez à http://localhost:5173/ pour voir l'application en action.🌐
+
+
