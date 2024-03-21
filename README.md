@@ -1,7 +1,6 @@
 # Projet Argent Bank 🏦
 
 
-**Bienvenue dans le dépôt GitHub du projet Argent Bank de Remede Agency !** 🎉
 
 **Contexte** 🌍
 
