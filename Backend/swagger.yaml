@@ -1,9 +1,9 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
   title: Bank Argent API documentation
   description: Contains all available API endpoints in this codebase
-  version: '1.0.0'
-  termsOfService: 'http://swagger.io/terms/'
+  version: "1.0.0"
+  termsOfService: "http://swagger.io/terms/"
 host: localhost:3001
 basePath: /api/v1
 schemes:
@@ -21,17 +21,17 @@ paths:
           description: Login Payload
           required: true
           schema:
-            $ref: '#/definitions/Login'
+            $ref: "#/definitions/Login"
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Login Successfully
           schema:
-            $ref: '#/definitions/LoginResponse'
-        '400':
+            $ref: "#/definitions/LoginResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
   /user/signup:
     post:
@@ -45,17 +45,17 @@ paths:
           description: Signup Payload
           required: true
           schema:
-            $ref: '#/definitions/User'
+            $ref: "#/definitions/User"
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: Signup Successfully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
   /user/profile:
     post:
@@ -70,16 +70,17 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: User profile retrieved successully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
     put:
       security:
@@ -93,23 +94,453 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
         - in: body
           name: body
           description: Update user profile attributes
           required: true
           schema:
-            $ref: '#/definitions/UserProfile'
+            $ref: "#/definitions/UserProfile"
       produces:
         - application/json
       responses:
-        '200':
+        "200":
           description: User profile retrieved successully
           schema:
-            $ref: '#/definitions/ApiResponse'
-        '400':
+            $ref: "#/definitions/ApiResponse"
+        "400":
           description: Invalid Fields
-        '500':
+        "500":
           description: Internal Server Error
+  /user/transactionsChecking:
+    get:
+      tags:
+        - User transactions Checking
+      summary: TransactionsChecking
+      description: Returns all transactions
+      responses:
+        "200":
+          description: Returns an array of all transactions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  date:
+                    type: string
+                    format: date-time
+            amount:
+              type: integer
+            description:
+              type: string
+            category:
+              type: string
+            balance:
+              type: integer
+            transaction_type:
+              type: string
+            note:
+              type: string
+        "500":
+          description: Unexpected Error
+    post:
+      security:
+        - Bearer: []
+      description: Send a new transaction
+      parameters:
+        - name: transaction Checking
+          in: body
+          description: Transaction data to add
+          required: true
+          schema:
+            type: object
+            properties:
+              id:
+                type: integer
+              date:
+                type: string
+                format: date-time
+              amount:
+                type: integer
+              description:
+                type: string
+              category:
+                type: string
+              balance:
+                type: integer
+              transaction type:
+                type: string
+              note:
+                type: string
+      responses:
+        "201":
+        description: Created
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            date:
+              type: string
+              format: date-time
+            amount:
+              type: integer
+            description:
+              type: string
+            category:
+              type: string
+            balance:
+              type: integer
+            transaction type:
+              type: string
+            note:
+              type: string
+
+        "500":
+          description: Unexpected Error
+        "401":
+          description: Unauthorized
+        "400":
+          description: Bad Request
+  /user/transactionsChecking/{id}:
+    put:
+      security:
+        - Bearer: []
+      summary: TransactionsChecking ID
+      description: Modify a specific transaction
+      parameters:
+        - name: id
+          in: path
+          description: Modify a work depending on id
+          required: true
+          type: integer
+        - name: transaction Checking
+          in: body
+          description: Nouvelles données de la transaction
+          required: true
+          schema:
+            type: object
+            properties:
+            category:
+              type: string
+            note:
+              type: string
+    responses:
+      "201":
+        description: The transaction updated successfully
+      "500":
+        description: Unexpected Error
+      "401":
+        description: Unauthorized
+      "400":
+        description: Bad Request
+    delete:
+      security:
+        - Bearer: []
+      description: Delete a transaction
+      parameters:
+        - name: id
+          in: path
+          description: Delete a transaction depending on id
+          required: true
+          type: integer
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Item Deleted
+        "401":
+          description: Unauthorized
+        "500":
+          description: Unexpected Behaviour
+
+  /user/transactionsSavings:
+    get:
+      tags:
+        - User transactions Savings
+      summary: TransactionsSavings
+      description: Returns all transactions
+      responses:
+        "200":
+        description: Returns an array of all transactions
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            date:
+              type: string
+              format: date-time
+            amount:
+              type: integer
+            description:
+              type: string
+            category:
+              type: string
+            balance:
+              type: integer
+            transaction type:
+              type: string
+            note:
+              type: string
+        "500":
+          description: Unexpected Error
+    post:
+      security:
+        - Bearer: []
+      summary: Send transaction
+      description: Send a new transaction
+      parameters:
+        - name: transaction Savings
+          in: body
+          description: Transaction data to add
+          required: true
+          schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            date:
+              type: string
+              format: date-time
+            amount:
+              type: integer
+            description:
+              type: string
+            category:
+              type: string
+            balance:
+              type: integer
+            transaction type:
+              type: string
+            note:
+              type: string
+      responses:
+        "201":
+        description: Created
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            date:
+              type: string
+              format: date-time
+            amount:
+              type: integer
+            description:
+              type: string
+            category:
+              type: string
+            balance:
+              type: integer
+            transaction type:
+              type: string
+            note:
+              type: string
+
+        "500":
+          description: Unexpected Error
+        "401":
+          description: Unauthorized
+        "400":
+          description: Bad Request
+  /user/transactionsSavings/{id}:
+    put:
+      security:
+        - Bearer: []
+      description: Modify a specific transaction
+      parameters:
+        - name: id
+          in: path
+          description: Modify a work depending on id
+          required: true
+          type: integer
+        - name: transaction Savings
+          in: body
+          description: Nouvelles données de la transaction
+          required: true
+          schema:
+            type: object
+            properties:
+              category:
+                type: string
+              note:
+                type: string
+    responses:
+      "201":
+        description: The transaction updated successfully
+      "500":
+        description: Unexpected Error
+      "401":
+        description: Unauthorized
+      "400":
+        description: Bad Request
+    delete:
+      security:
+        - Bearer: []
+      description: Delete a transaction
+      parameters:
+        - name: id
+          in: path
+          description: Delete a transaction depending on id
+          required: true
+          type: integer
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Item Deleted
+        "401":
+          description: Unauthorized
+        "500":
+          description: Unexpected Behaviour
+
+  /user/transactionsCreditCard:
+    get:
+      tags:
+        - User transactions Credit Card
+      description: Returns all transactions
+      responses:
+        "200":
+        description: Returns an array of all transactions
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            date:
+              type: string
+              format: date-time
+            amount:
+              type: integer
+            description:
+              type: string
+            category:
+              type: string
+            balance:
+              type: integer
+            transaction type:
+              type: string
+            note:
+              type: string
+        "500":
+          description: Unexpected Error
+    post:
+      security:
+        - Bearer: []
+      description: Send a new transaction
+      parameters:
+        - name: transaction Credit Card
+          in: body
+          description: Transaction data to add
+          required: true
+          schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            date:
+              type: string
+              format: date-time
+            amount:
+              type: integer
+            description:
+              type: string
+            category:
+              type: string
+            balance:
+              type: integer
+            transaction type:
+              type: string
+            note:
+              type: string
+      responses:
+        "201":
+        description: Created
+        schema:
+          type: object
+          properties:
+            id:
+              type: integer
+            date:
+              type: string
+              format: date-time
+            amount:
+              type: integer
+            description:
+              type: string
+            category:
+              type: string
+            balance:
+              type: integer
+            transaction type:
+              type: string
+            note:
+              type: string
+
+        "500":
+          description: Unexpected Error
+        "401":
+          description: Unauthorized
+        "400":
+          description: Bad Request
+  /user/transactionsCreditCard/{id}:
+    put:
+      security:
+        - Bearer: []
+      description: Modify a specific transaction
+      parameters:
+        - name: id
+          in: path
+          description: Modify a work depending on id
+          required: true
+          type: integer
+        - name: transaction Credit Card
+          in: body
+          description: Nouvelles données de la transaction
+          required: true
+          schema:
+            type: object
+            properties:
+              category:
+                type: string
+              note:
+                type: string
+    responses:
+      "201":
+        description: The transaction updated successfully
+      "500":
+        description: Unexpected Error
+      "401":
+        description: Unauthorized
+      "400":
+        description: Bad Request
+    delete:
+      security:
+        - Bearer: []
+      description: Delete a transaction
+      parameters:
+        - name: id
+          in: path
+          description: Delete a transaction depending on id
+          required: true
+          type: integer
+          schema:
+            type: integer
+            example: 1
+      responses:
+        "200":
+          description: Item Deleted
+        "401":
+          description: Unauthorized
+        "500":
+          description: Unexpected Behaviour
+
 securityDefinitions:
   Bearer:
     type: apiKey
@@ -138,7 +569,7 @@ definitions:
       password:
         type: string
         description: user password
-  ApiResponse:
+  Apiresponses:
     type: object
     properties:
       status:
@@ -152,7 +583,7 @@ definitions:
             type: string
           email:
             type: string
-  LoginResponse:
+  Loginresponses:
     type: object
     properties:
       token:
