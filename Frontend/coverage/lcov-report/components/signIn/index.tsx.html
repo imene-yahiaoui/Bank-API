@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.88% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>7/18</span>
+                <span class='fraction'>15/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">38.88% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>7/18</span>
+                <span class='fraction'>15/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -117,12 +117,12 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -133,11 +133,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -166,11 +166,11 @@ import "./style.css";
 &nbsp;
 const SignIn = () =&gt; {
   const navigate = useNavigate();
-  const user = <span class="cstat-no" title="statement not covered" >useSelector(selectUser);</span>
-  const infos = <span class="cstat-no" title="statement not covered" >useSelector(body);</span>
-<span class="cstat-no" title="statement not covered" >  console.log(infos);</span>
-  const firstName = <span class="cstat-no" title="statement not covered" >infos.payload?.user?.body?.body?.firstName;</span>
-  const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
+  const user = useSelector(selectUser);
+  const infos = useSelector(body);
+  console.log(infos);
+  const firstName = infos.payload?.user?.body?.body?.firstName;
+  const dispatch = useDispatch();
 &nbsp;
   //finction for SignIn
   function <span class="fstat-no" title="function not covered" >Singin(</span>) {
@@ -181,11 +181,11 @@ const SignIn = () =&gt; {
 <span class="cstat-no" title="statement not covered" >    navigate("/");</span>
 <span class="cstat-no" title="statement not covered" >    dispatch(logout());</span>
   }
-<span class="cstat-no" title="statement not covered" >  <span class="missing-if-branch" title="if path not taken" >I</span>if (!user) {</span>
-<span class="cstat-no" title="statement not covered" >    localStorage.removeItem("token");</span>
+  if (!user) {
+    localStorage.removeItem("token");
   }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return !user ? (</span>
+  return !user ? (
     &lt;div&gt;
       &lt;button onClick={Singin} className="main-nav-item"&gt;
         &lt;i className="fa fa-user-circle"&gt;&lt;/i&gt;
@@ -193,7 +193,7 @@ const SignIn = () =&gt; {
       &lt;/button&gt;
     &lt;/div&gt;
   ) : (
-    &lt;div className="logout"&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >    &lt;div className="logout"&gt;</span>
       &lt;Link className="nameUser" to="/profile"&gt;
         &lt;i className="fa fa-user-circle"&gt;&lt;/i&gt;
         &lt;p className="user name"&gt;{firstName}&lt;/p&gt;
@@ -214,7 +214,7 @@ export default SignIn;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-20T22:36:58.881Z
+                at 2024-03-24T00:04:51.228Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

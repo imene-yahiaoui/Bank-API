@@ -1,20 +1,29 @@
 import { render, screen } from "@testing-library/react";
-
 import "@testing-library/jest-dom/extend-expect";
-import MyComponent from "./myComponenet.tsx";
+import { Provider } from "react-redux";
+import { store } from "../../app/store.ts";
 import Header from "./index.tsx";
-// Test du composant __test__
-test("renders MyComponent with correct text", () => {
-  render(<MyComponent />);
-  expect(screen.getByTestId("my-component")).toHaveTextContent("Hello, World!");
+import { MemoryRouter } from "react-router-dom";
+
+test("renders header with correct text", () => {
+  render(
+    <Provider store={store}>
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    </Provider>
+  );
+
+  expect(screen.getByTestId("title")).toHaveTextContent("Argent Bank");
+});
+
+test("logo Be In The Document", () => {
+  render(
+    <Provider store={store}>
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    </Provider>
+  );
   expect(screen.getByTestId("photo")).toBeInTheDocument();
 });
-
-// // Test du header
-test("renders header with correct text", () => {
-  render(<Header />);
-
-  expect(screen.getByTestId("my-component")).toHaveTextContent("Argent Bank");
-});
-
- 
