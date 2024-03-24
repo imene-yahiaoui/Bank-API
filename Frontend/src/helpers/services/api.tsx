@@ -1,12 +1,16 @@
 /**
  * loginAPI
- * @return {result}
+ * @param {string} email - User email
+ * @param {string} password - User password
+ * @return {Promise<any>} result - Result of the login operation
  */
+
+import { LocalHost, LOGIN_URL, PROFILE_URL } from "./apiEndpoints.ts";
 export async function loginAPI(email: string, password: string) {
   const item = { email, password };
 
   try {
-    const result = await fetch("http://localhost:3001/api/v1/user/login", {
+    const result = await fetch(LocalHost + LOGIN_URL, {
       method: "POST",
       headers: {
         accept: "application/json",
@@ -22,35 +26,54 @@ export async function loginAPI(email: string, password: string) {
   }
 }
 
+/**
+ * getProfileAPI
+ * @param {string | null} token - User authentication token
+ * @return {Promise<any>} response - User profile data
+ */
 export async function getProfileAPI(token: string | null) {
-  const response = await fetch("http://localhost:3001/api/v1/user/profile", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      accept: "application/json",
-    },
-  });
+  try {
+    const response = await fetch(LocalHost + PROFILE_URL, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        accept: "application/json",
+      },
+    });
 
-  return await response.json();
+    return await response.json();
+  } catch (e) {
+    console.log(e, "error in getProfileAPI");
+  }
 }
-
+/**
+ * editUserNameAPI
+ * @param {string | null} token - User authentication token
+ * @param {string} firstName - User's first name
+ * @param {string} lastName - User's last name
+ * @return {Promise<any>} response - Result of the username edit operation
+ */
 export async function editUserNameAPT(
   token: string | null,
   firstName: string,
   lastName: string
 ) {
-  const response = await fetch("http://localhost:3001/api/v1/user/profile", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-      accept: "application/json",
-    },
+  try {
+    const response = await fetch(LocalHost + PROFILE_URL, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        accept: "application/json",
+      },
 
-    body: JSON.stringify({
-      firstName: firstName,
-      lastName: lastName,
-    }),
-  });
-  return await response.json();
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+      }),
+    });
+    return await response.json();
+  } catch (e) {
+    console.log(e, "error in editUserNameAPT");
+  }
 }
