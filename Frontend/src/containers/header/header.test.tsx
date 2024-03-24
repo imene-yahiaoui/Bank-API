@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen ,fireEvent} from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { Provider } from "react-redux";
 import { store } from "../../app/store.ts";
@@ -26,4 +26,18 @@ test("logo Be In The Document", () => {
     </Provider>
   );
   expect(screen.getByTestId("photo")).toBeInTheDocument();
+});
+test("logo should redirect to home page", () => {
+  render(
+    <Provider store={store}>
+      <MemoryRouter>
+        <Header />
+      </MemoryRouter>
+    </Provider>
+  );
+
+  const logoLink = screen.getByTestId("photo");
+  fireEvent.click(logoLink);
+
+  expect(window.location.pathname).toBe("/");
 });
