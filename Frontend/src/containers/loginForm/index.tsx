@@ -1,6 +1,6 @@
 /* eslint-disable no-inner-declarations */
 import { useNavigate } from "react-router-dom";
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import "./style.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../helpers/features/userSlice";
@@ -12,11 +12,14 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [errorUser, setErrorUser] = useState(false);
   const [error, setError] = useState(false);
-  
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  async function log(e: React.SyntheticEvent){
+  const isNotBackendMsg = (message) => {
+    alert(message);
+  };
+  async function log(e: React.SyntheticEvent) {
     e.preventDefault();
 
     if (email.length === 0 || password.length === 0) {
@@ -29,7 +32,9 @@ const LoginForm = () => {
 
     const { status, body: resultBody } = await loginAPI(email, password);
 
-    if (status === 200) {
+    if (!status) {
+      isNotBackendMsg("Server unavailable. Please try again later");
+    } else if (status === 200) {
       navigate("/profile");
 
       localStorage.setItem("token", resultBody.token);
@@ -51,6 +56,7 @@ const LoginForm = () => {
         );
       }
     } else {
+      console.log(status);
       setErrorUser(true);
       setEmail("");
       setPassword("");
@@ -60,10 +66,10 @@ const LoginForm = () => {
       setTimeout(deletError, 3000);
     }
   }
- 
+
   return (
     <form>
-      <div className="input-wrapper" >
+      <div className="input-wrapper">
         <label htmlFor="username">Username</label>
         <input
           id="username"

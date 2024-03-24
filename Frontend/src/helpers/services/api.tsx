@@ -1,16 +1,25 @@
+/**
+ * loginAPI
+ * @return {result}
+ */
 export async function loginAPI(email: string, password: string) {
   const item = { email, password };
 
-  const result = await fetch("http://localhost:3001/api/v1/user/login", {
-    method: "POST",
-    headers: {
-      accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(item),
-  });
+  try {
+    const result = await fetch("http://localhost:3001/api/v1/user/login", {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    });
 
-  return await result.json();
+    return await result.json();
+  } catch (e) {
+    return !status;
+    console.log(e, "error in the backend");
+  }
 }
 
 export async function getProfileAPI(token: string | null) {
