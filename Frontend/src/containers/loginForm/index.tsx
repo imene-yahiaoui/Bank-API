@@ -6,13 +6,10 @@ import { useDispatch } from "react-redux";
 import { login } from "../../helpers/features/userSlice";
 import { body } from "../../helpers/features/userSlice";
 import { loginAPI, getProfileAPI } from "../../helpers/services/api";
-import DisplayMessage from "../../components/displayMessage"
+import DisplayMessage from "../../components/displayMessage";
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errorUser, setErrorUser] = useState(false);
-  const [error, setError] = useState(false);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -20,18 +17,19 @@ const LoginForm = () => {
     e.preventDefault();
 
     if (email.length === 0 || password.length === 0) {
-      setError(true);
-      function msgdelet() {
-        setError(false);
-      }
-      setTimeout(msgdelet, 30000);
+      DisplayMessage(
+        "Error:Email and password cannot be empty",
+        "linear-gradient(to right, #ff0000, #ff4500)"
+      );
     }
 
     const { status, body: resultBody } = await loginAPI(email, password);
 
     if (!status) {
-      DisplayMessage( "Server unavailable. Please try again later")
-      
+      DisplayMessage(
+        "Server unavailable. Please try again later",
+        "linear-gradient(to right, #00b09b, #96c93d)"
+      );
     } else if (status === 200) {
       navigate("/profile");
 
@@ -54,14 +52,14 @@ const LoginForm = () => {
         );
       }
     } else {
-      console.log(status);
-      setErrorUser(true);
-      setEmail("");
-      setPassword("");
-      function deletError() {
-        setErrorUser(false);
+      if (email.length !== 0 || password.length !== 0) {
+        DisplayMessage(
+          "Error in username or password",
+          "linear-gradient(to right, #ff0000, #ff4500)"
+        );
+        setEmail("");
+        setPassword("");
       }
-      setTimeout(deletError, 3000);
     }
   }
 
@@ -72,7 +70,7 @@ const LoginForm = () => {
         <input
           id="username"
           type="text"
-          value={email.trim()} 
+          value={email.trim()}
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
@@ -89,18 +87,7 @@ const LoginForm = () => {
         <input type="checkbox" id="remember-me" />
         <label htmlFor="remember-me">Remember me</label>
       </div>
-      {error ? (
-        <p className="error">
-          Error:Email and password cannot be null or empty
-        </p>
-      ) : (
-        ""
-      )}
-      {!error && errorUser ? (
-        <p className="error">Error in username or password</p>
-      ) : (
-        ""
-      )}
+
       <button type="submit" className="sign-in-button" onClick={log}>
         Sign In
       </button>
