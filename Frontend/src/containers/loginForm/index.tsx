@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../helpers/features/userSlice";
 import { body } from "../../helpers/features/userSlice";
 import { loginAPI, getProfileAPI } from "../../helpers/services/api";
-
+import DisplayMessage from "../../components/displayMessage"
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,9 +16,6 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const isNotBackendMsg = (message) => {
-    alert(message);
-  };
   async function log(e: React.SyntheticEvent) {
     e.preventDefault();
 
@@ -33,7 +30,8 @@ const LoginForm = () => {
     const { status, body: resultBody } = await loginAPI(email, password);
 
     if (!status) {
-      isNotBackendMsg("Server unavailable. Please try again later");
+      DisplayMessage( "Server unavailable. Please try again later")
+      
     } else if (status === 200) {
       navigate("/profile");
 
@@ -74,14 +72,14 @@ const LoginForm = () => {
         <input
           id="username"
           type="text"
-          value={email}
+          value={email.trim()} 
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
       <div className="input-wrapper">
         <label htmlFor="password">Password</label>
         <input
-          value={password}
+          value={password.trim()}
           onChange={(e) => setPassword(e.target.value)}
           type="password"
           id="password"
