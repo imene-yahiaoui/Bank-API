@@ -66,7 +66,9 @@ const LoginForm = () => {
   return (
     <form>
       <div className="input-wrapper">
-        <label htmlFor="username">Username</label>
+        <label htmlFor="username" data-testid="Username">
+          Username
+        </label>
         <input
           id="username"
           type="text"
@@ -75,7 +77,9 @@ const LoginForm = () => {
         />
       </div>
       <div className="input-wrapper">
-        <label htmlFor="password">Password</label>
+        <label htmlFor="password" data-testid="Password">
+          Password
+        </label>
         <input
           value={password.trim()}
           onChange={(e) => setPassword(e.target.value)}

@@ -26,7 +26,7 @@ const SignIn = () => {
 
   return !user ? (
     <div>
-      <button onClick={Singin} className="main-nav-item">
+      <button data-testid="login" onClick={Singin} className="main-nav-item">
         <i className="fa fa-user-circle"></i>
         Sign In
       </button>
@@ -37,7 +37,7 @@ const SignIn = () => {
         <i className="fa fa-user-circle"></i>
         <p className="user name">{firstName}</p>
       </Link>
-      <button onClick={Singout} className="main-nav-item">
+      <button  data-testid="logout" onClick={Singout} className="main-nav-item">
         <i className="fa fa-sign-out"></i>
         Sign out
       </button>
