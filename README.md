@@ -25,6 +25,7 @@ Dans cette phase, nous créerons une application web permettant aux clients de s
 
 -Se connecter au système
 
+
 -Se déconnecter du système
 
 
@@ -61,6 +62,7 @@ La phase 2 impliquera la spécification des endpoints d'API pour les transaction
 
 💼 Redux: Gestion d'état prévisible pour les applications JavaScript.
 
+cypress and testing library for tests
 
 ***Côté Backend***
 
