@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1711578627454" clover="3.2.0">
-  <project timestamp="1711578627455" name="All files">
-    <metrics statements="106" coveredstatements="65" conditionals="14" coveredconditionals="2" methods="17" coveredmethods="6" elements="137" coveredelements="73" complexity="0" loc="106" ncloc="106" packages="7" files="8" classes="8"/>
+<coverage generated="1711585161986" clover="3.2.0">
+  <project timestamp="1711585161986" name="All files">
+    <metrics statements="114" coveredstatements="73" conditionals="14" coveredconditionals="2" methods="19" coveredmethods="8" elements="147" coveredelements="83" complexity="0" loc="114" ncloc="114" packages="9" files="10" classes="10"/>
     <package name="app">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="store.ts" path="C:\Users\sadek\Desktop\dosier openclassroom\concepteur\p13\Bank-API-1\Frontend\src\app\store.ts">
@@ -18,6 +18,16 @@
         <line num="25" count="3" type="stmt"/>
       </file>
     </package>
+    <package name="components.account">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.tsx" path="C:\Users\sadek\Desktop\dosier openclassroom\concepteur\p13\Bank-API-1\Frontend\src\components\account\index.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="components.displayMessage">
       <metrics statements="5" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="index.tsx" path="C:\Users\sadek\Desktop\dosier openclassroom\concepteur\p13\Bank-API-1\Frontend\src\components\displayMessage\index.tsx">
@@ -27,6 +37,16 @@
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="components.featureSection">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.tsx" path="C:\Users\sadek\Desktop\dosier openclassroom\concepteur\p13\Bank-API-1\Frontend\src\components\featureSection\index.tsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
       </file>
     </package>
     <package name="components.signIn">
