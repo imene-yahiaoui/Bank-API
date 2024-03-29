@@ -24,7 +24,7 @@ const UserName = () => {
         {`${firstName} ${lastName} ! `}
       </h1>
 
-      <button onClick={edit} className="edit-button">
+      <button onClick={edit} className="edit-button" data-testid="submitEditName">
         Edit Name
       </button>
     </div>
