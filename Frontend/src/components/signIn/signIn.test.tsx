@@ -4,8 +4,9 @@ import { Provider } from "react-redux";
 import { store } from "../../app/store.ts";
 import SignIn from "./index.tsx";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
-// import { useSelector } from "react-redux";
-// import { selectUser } from "../../helpers/features/userSlice.ts";
+import { useDispatch } from "react-redux";
+import { login } from "../../helpers/features/userSlice";
+ 
 
 const renderSignIn = (
   <Provider store={store}>
@@ -20,14 +21,19 @@ describe("login and logout statement", () => {
     render(renderSignIn);
     expect(screen.getByTestId("login")).toHaveTextContent("Sign In");
   });
-  // test("renders login btn with correct text", () => {
-  //   const user = useSelector(selectUser);
-  //   const userDetails = { firstName: "jhone", lastname: "deby" };
-  //   store.dispatch(user(userDetails));
-  //   render(renderSignIn);
+  test("renders logout btn with correct text", () => {
+    const dispatch = useDispatch();
+    const userDetails = { email: "jhone", password: "deby" };
+  
+    dispatch(
+      login({
+        user: userDetails ,
+      })
+    );
+    render(renderSignIn);
 
-  //   expect(screen.getByTestId("logout")).toHaveTextContent("Sign out");
-  // });
+    expect(screen.getByTestId("logout")).toHaveTextContent("Sign out");
+  });
 });
 
 describe("login and logout navigation", () => {

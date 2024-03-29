@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1711585161986" clover="3.2.0">
-  <project timestamp="1711585161986" name="All files">
-    <metrics statements="114" coveredstatements="73" conditionals="14" coveredconditionals="2" methods="19" coveredmethods="8" elements="147" coveredelements="83" complexity="0" loc="114" ncloc="114" packages="9" files="10" classes="10"/>
+<coverage generated="1711714740765" clover="3.2.0">
+  <project timestamp="1711714740765" name="All files">
+    <metrics statements="114" coveredstatements="72" conditionals="14" coveredconditionals="2" methods="19" coveredmethods="7" elements="147" coveredelements="81" complexity="0" loc="114" ncloc="114" packages="9" files="10" classes="10"/>
     <package name="app">
       <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
       <file name="store.ts" path="C:\Users\sadek\Desktop\dosier openclassroom\concepteur\p13\Bank-API-1\Frontend\src\app\store.ts">
         <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="5" count="3" type="stmt"/>
-        <line num="7" count="3" type="stmt"/>
-        <line num="12" count="3" type="stmt"/>
-        <line num="14" count="3" type="stmt"/>
-        <line num="19" count="3" type="stmt"/>
-        <line num="25" count="3" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
       </file>
     </package>
     <package name="components.account">
@@ -50,27 +50,27 @@
       </file>
     </package>
     <package name="components.signIn">
-      <metrics statements="18" coveredstatements="16" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="2"/>
+      <metrics statements="18" coveredstatements="15" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="1"/>
       <file name="index.tsx" path="C:\Users\sadek\Desktop\dosier openclassroom\concepteur\p13\Bank-API-1\Frontend\src\components\signIn\index.tsx">
-        <metrics statements="18" coveredstatements="16" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="2"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="7" type="stmt"/>
-        <line num="8" count="7" type="stmt"/>
-        <line num="9" count="7" type="stmt"/>
-        <line num="10" count="7" type="stmt"/>
-        <line num="11" count="7" type="stmt"/>
-        <line num="12" count="7" type="stmt"/>
-        <line num="16" count="1" type="stmt"/>
+        <metrics statements="18" coveredstatements="15" conditionals="3" coveredconditionals="2" methods="3" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="20" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
-        <line num="23" count="7" type="cond" truecount="1" falsecount="0"/>
-        <line num="24" count="7" type="stmt"/>
-        <line num="27" count="7" type="cond" truecount="1" falsecount="1"/>
-        <line num="48" count="2" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="4" type="stmt"/>
+        <line num="27" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="48" count="1" type="stmt"/>
       </file>
     </package>
     <package name="containers.header">
@@ -131,16 +131,16 @@
       <metrics statements="10" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
       <file name="userSlice.ts" path="C:\Users\sadek\Desktop\dosier openclassroom\concepteur\p13\Bank-API-1\Frontend\src\helpers\features\userSlice.ts">
         <metrics statements="10" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
         <line num="27" count="0" type="stmt"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
-        <line num="39" count="3" type="stmt"/>
-        <line num="40" count="10" type="stmt"/>
-        <line num="42" count="3" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="6" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
       </file>
     </package>
     <package name="helpers.services">
