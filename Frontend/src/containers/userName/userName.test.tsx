@@ -15,4 +15,12 @@ const renderUserName = (
 test("renders EditUser vwith correct title", () => {
   render(renderUserName);
   expect(screen.getByTestId("submitEditName")).toBeInTheDocument();
+  expect(screen.getByText("Welcome back")).toBeInTheDocument();
+});
+
+test("checks for the presence of userName In The Document ", () => {
+  render(renderUserName);
+  const editButton = screen.getByText("Edit Name");
+  editButton.click();
+  expect(screen.getByTestId("userName")).toBeInTheDocument();
 });

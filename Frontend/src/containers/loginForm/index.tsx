@@ -72,6 +72,7 @@ const LoginForm = () => {
         <input
           id="username"
           type="text"
+          data-testid="UsernameInput"
           value={email.trim()}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -81,6 +82,7 @@ const LoginForm = () => {
           Password
         </label>
         <input
+        data-testid="PasswordInput"
           value={password.trim()}
           onChange={(e) => setPassword(e.target.value)}
           type="password"

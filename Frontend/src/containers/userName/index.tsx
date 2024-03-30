@@ -20,7 +20,7 @@ const UserName = () => {
   ) : (
     <div className="Userheader">
       <h1>Welcome back</h1>
-      <h1 className="Userheader capitalizeName">
+      <h1 className="Userheader capitalizeName" data-testid="userName">
         {`${firstName} ${lastName} ! `}
       </h1>
 
