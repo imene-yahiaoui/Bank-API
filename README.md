@@ -32,6 +32,7 @@ Dans cette phase, nous créerons une application web permettant aux clients de s
 
 -Accéder aux informations du profil après une connexion réussie
 
+
 Modifier le profil et mettre à jour les données dans la base de données
 
 
