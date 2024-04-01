@@ -5,7 +5,8 @@ import { store } from "../../app/store.ts";
 import LoginForm from "./index.tsx";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import DisplayMessage from "../../components/displayMessage";
-// import { loginAPI  } from "../../helpers/services/api";
+
+
 const LoginFromRender = (
   <Provider store={store}>
     <MemoryRouter>
@@ -72,7 +73,7 @@ test("LoginForm should display an error message when email and password are empt
   );
 });
 
-test("LoginForm should display an error message when email and password are rong", () => {
+test("LoginForm should display an error message when Server unavailable", () => {
   render(LoginFromRender);
   const emailValue = screen.getByTestId("UsernameInput");
   const newEmail = "tony@stark.com";
@@ -87,4 +88,5 @@ test("LoginForm should display an error message when email and password are rong
     "Server unavailable. Please try again later",
     "linear-gradient(to right, #00b09b, #96c93d)"
   );
+
 });

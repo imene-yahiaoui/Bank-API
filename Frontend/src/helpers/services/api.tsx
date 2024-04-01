@@ -21,8 +21,9 @@ export async function loginAPI(email: string, password: string) {
 
     return await result.json();
   } catch (e) {
-    return !status;
     console.log(e, "error in the backend");
+    return !status
+ 
   }
 }
 
@@ -53,7 +54,7 @@ export async function getProfileAPI(token: string | null) {
  * @param {string} lastName - User's last name
  * @return {Promise<any>} response - Result of the username edit operation
  */
-export async function editUserNameAPT(
+export async function editUserNameAPI(
   token: string | null,
   firstName: string,
   lastName: string
@@ -74,6 +75,6 @@ export async function editUserNameAPT(
     });
     return await response.json();
   } catch (e) {
-    console.log(e, "error in editUserNameAPT");
+    console.log(e, "error in editUserNameAPI");
   }
 }
