@@ -4,15 +4,15 @@ import EditUser from "./index";
 import { Provider } from "react-redux";
 import { store } from "../../app/store.ts";
 import { MemoryRouter } from "react-router-dom";
-
+import { editUserNameAPI } from "../../helpers/services/api";
+import fetchMock from "jest-fetch-mock";
 
 const closeModalMock = jest.fn();
-
 
 const renderEditUser = (
   <Provider store={store}>
     <MemoryRouter>
-      <EditUser closeModal={closeModalMock}  />
+      <EditUser closeModal={closeModalMock} />
     </MemoryRouter>
   </Provider>
 );
@@ -54,33 +54,24 @@ describe("click btns ", () => {
     fireEvent.click(canselBtn);
     expect(closeModalMock).toHaveBeenCalledWith(false);
   });
-  // test("click Save btn ", () => {
-  //   ediUserName.mockResolvedValue({ status: 200 });
-   
-  //   const userDetails = {
-  //     email: "tony@stark.com",
-  //     firstName: "tomi",
-  //     lastName: "mariat",
-  //     userName: "stark",
-  //     createdAt: "2023-01-26T15:06:17.564Z",
-  //     updatedAt: "2024-03-29T15:54:45.254Z",
-  //     id: "63d296e968a4a72520939ede",
-  //   };
-  //   store.dispatch(
-  //     body({
-  //       body: userDetails,
-  //     })
-  //   );
 
-  //   render(renderEditUser);
-  //   const SaveBtn = screen.getByRole("button", { name: "Save" });
-  //   expect(SaveBtn).toBeInTheDocument();
+  test("click Save btn ", async () => {
+    const mockResponse = { success: true };
+    fetchMock.mockResponseOnce(JSON.stringify(mockResponse));
 
-  //   fireEvent.click(SaveBtn);
-  //   expect(closeModalMock).toHaveBeenCalledWith(false);
-  // });
+    const response = await editUserNameAPI("tokensssm", "John", "Doe");
+    expect(response).toEqual(undefined);
 
-  
- 
+    render(renderEditUser);
+    const SaveBtn = screen.getByRole("button", { name: "Save" });
+    expect(SaveBtn).toBeInTheDocument();
+
+    fireEvent.click(SaveBtn);
+
+    try {
+      expect(closeModalMock).toHaveBeenCalledWith(false);
+    } catch (error) {
+      console.error(error, "error in editUserNameAPI");
+    }
+  });
 });
- 

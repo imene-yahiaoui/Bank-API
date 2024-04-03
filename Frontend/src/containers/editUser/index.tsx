@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import { body } from "../../helpers/features/userSlice.ts";
 import { useDispatch } from "react-redux";
-import { editUserNameAPI} from "../../helpers/services/api";
+import { editUserNameAPI } from "../../helpers/services/api";
 import "./style.css";
 
 const EditUser = ({ closeModal }: { closeModal: any }) => {
@@ -28,6 +28,7 @@ const EditUser = ({ closeModal }: { closeModal: any }) => {
     }
 
     closeModal(false);
+   
   }
 
   return (
