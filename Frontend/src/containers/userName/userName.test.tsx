@@ -1,5 +1,5 @@
 import UserName from "./index";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { Provider } from "react-redux";
 import { store } from "../../app/store.ts";
@@ -23,4 +23,13 @@ test("checks for the presence of userName In The Document ", () => {
   const editButton = screen.getByText("Edit Name");
   editButton.click();
   expect(screen.getByTestId("userName")).toBeInTheDocument();
+});
+test("click edit btn ", () => {
+  const mockPreventDefault = jest.fn();
+  render(renderUserName);
+  const editButton = screen.getByText("Edit Name");
+
+  fireEvent.click(editButton, {
+    preventDefault: mockPreventDefault,
+  });
 });
