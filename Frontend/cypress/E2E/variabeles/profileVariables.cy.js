@@ -1,0 +1,15 @@
+export const profilePage = '.main';
+export const userFirstName = ".user";
+export const icon = ".nameUser > .fa";
+export const signOut = '[data-testid="logout"]';
+export const titleProfilePage = "div.Userheader > :nth-child(1)";
+export const userName = '[data-testid="userName"]';
+export const editBtn = '[data-testid="submitEditName"]';
+export const firstTransaction = ".main > :nth-child(2)";
+export const secondTransaction = ".main > :nth-child(3)";
+export const thirdTransaction = ".main > :nth-child(4)";
+export const editUserInfoTitle = '.editUser > [data-testid="title"]';
+export const FirstNameInput = '[data-testid="First Name"]';
+export const LastNameInput = '[data-testid="Last Name"]';
+export const saveBtn = ".btn > :nth-child(1)";
+export const cancelBtn = ".btn > :nth-child(2)";
