@@ -47,3 +47,32 @@ describe("signIn Page  ", () => {
     cy.get(signInButton).should("be.visible");
   });
 });
+
+/**
+ * test integration
+ */
+describe("signIn Page  ", () => {
+  it("should display an error message when logging in with incorrect credentials", () => {
+    cy.get(userNameInput).type("user@gmail.com");
+    cy.get(passwordInput).type("1234");
+    cy.get(signInButton).click();
+    cy.get(toastify).should("be.visible");
+    cy.get(toastify).should("contain", "Error in username or password");
+  });
+  it("should display an error message when logging in with empty fields ", () => {
+    cy.get(userNameInput).invoke("val", "");
+    cy.get(passwordInput).invoke("val", "");
+    cy.get(signInButton).click();
+    cy.get(toastify).should("be.visible");
+    cy.get(toastify).should(
+      "contain",
+      "Error:Email and password cannot be empty"
+    );
+  });
+  it("should navigate to the profile page when logging in with correct credentials ", () => {
+    cy.get(userNameInput).type("tony@stark.com");
+    cy.get(passwordInput).type("password123");
+    cy.get(signInButton).click();
+    cy.url().should("include", "/profile");
+  });
+});
