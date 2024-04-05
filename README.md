@@ -66,7 +66,12 @@ La phase 2 impliquera la spécification des endpoints d'API pour les transaction
 
 💼 Redux: Gestion d'état prévisible pour les applications JavaScript.
 
-cypress and testing library for tests
+
+🔍 Cypress: Un framework de test d'intégration pour les applications web.
+
+
+🧪 Testing Library: Une bibliothèque de tests pour écrire des tests unitaires simples et maintenables.
+
 
 ***Côté Backend***
 
