@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 import { body } from "../../helpers/features/userSlice.ts";
 import { useDispatch } from "react-redux";
 import { editUserNameAPI } from "../../helpers/services/api";
+import DisplayMessage from "../../components/displayMessage";
+
 import "./style.css";
 
 const EditUser = ({ closeModal }: { closeModal: any }) => {
@@ -19,16 +21,19 @@ const EditUser = ({ closeModal }: { closeModal: any }) => {
   async function Update(e: React.SyntheticEvent) {
     e.preventDefault();
     const ediUserName = await editUserNameAPI(token, firstName, lastName);
-    if (ediUserName.status === 200) {
+    if (ediUserName?.status === 200) {
       dispatch(
         body({
           body: ediUserName.body,
         })
       );
+    } else {
+      DisplayMessage(
+        "Server unavailable. Please try again later",
+        "linear-gradient(to right, #00b09b, #96c93d)"
+      );
     }
-
     closeModal(false);
-   
   }
 
   return (
