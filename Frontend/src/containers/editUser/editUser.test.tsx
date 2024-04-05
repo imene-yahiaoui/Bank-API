@@ -60,6 +60,7 @@ describe("click btns ", () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse));
 
     const response = await editUserNameAPI("tokensssm", "John", "Doe");
+    //ici je ne coprend pas pourquoi le resu est undefined 
     expect(response).toEqual(undefined);
 
     render(renderEditUser);
