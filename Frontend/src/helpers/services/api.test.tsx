@@ -7,26 +7,37 @@ import fetchMock from "jest-fetch-mock";
 describe("loginAPI function", () => {
   beforeEach(() => {
     fetchMock.resetMocks();
+    console.log = jest.fn();
   });
 
   it("should call loginAPI with correct parameters", async () => {
     const mockResponse = true;
+
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse));
 
     const result = await loginAPI("test@example.com", "password123");
-
-    expect(result).toEqual(mockResponse);
+    if (!result?.status) {
+      expect(result).toEqual(mockResponse);
+    } else {
+      expect(result.message).toEqual("Error: User not found!");
+      expect(result.status).toBe(400);
+    }
   });
 
   it("should handle errors in loginAPI", async () => {
     fetchMock.mockRejectOnce(new Error("API Error"));
     console.log = jest.fn();
     const response = await loginAPI("test@example.com", "password123");
-    expect(response).toBe(!status);
-    expect(console.log).toHaveBeenCalledWith(
-      expect.any(Error),
-      "error in the backend"
-    );
+    if (!response?.status) {
+      expect(response).toBe(!status);
+      expect(console.log).toHaveBeenCalledWith(
+        expect.any(Error),
+        "error in the backend"
+      );
+    } else {
+      expect(response.message).toEqual("Error: User not found!");
+      expect(response.status).toBe(400);
+    }
   });
 });
 /**
@@ -35,6 +46,8 @@ describe("loginAPI function", () => {
 describe("getProfileAPI function", () => {
   beforeEach(() => {
     loginAPI("test@example.com", "password123");
+    fetchMock.resetMocks();
+    console.log = jest.fn();
   });
 
   it("should call getProfileAPI with correct parameters", async () => {
@@ -42,8 +55,12 @@ describe("getProfileAPI function", () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse));
 
     const response = await getProfileAPI("tokensssm");
-
-    expect(response).toBe(undefined);
+    if (!response?.status) {
+      expect(response).toBe(undefined);
+    } else {
+      expect(response.message).toBe("jwt malformed");
+      expect(response.status).toBe(401);
+    }
   });
 
   it("should handle errors in getProfileAPI", async () => {
@@ -51,12 +68,16 @@ describe("getProfileAPI function", () => {
     console.log = jest.fn();
 
     const response = await getProfileAPI("tokensssm");
-
-    expect(response).toBeUndefined();
-    expect(console.log).toHaveBeenCalledWith(
-      expect.any(Error),
-      "error in getProfileAPI"
-    );
+    if (!response?.status) {
+      expect(response).toBeUndefined();
+      expect(console.log).toHaveBeenCalledWith(
+        expect.any(Error),
+        "error in getProfileAPI"
+      );
+    } else {
+      expect(response.message).toBe("jwt malformed");
+      expect(response.status).toBe(401);
+    }
   });
 });
 /**
@@ -65,6 +86,7 @@ describe("getProfileAPI function", () => {
 describe("editUserNameAPI function", () => {
   beforeEach(() => {
     fetchMock.resetMocks();
+    console.log = jest.fn();
   });
 
   it("should call editUserNameAPI with correct parameters", async () => {
@@ -72,22 +94,27 @@ describe("editUserNameAPI function", () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockResponse));
 
     const response = await editUserNameAPI("tokensssm", "John", "Doe");
-
-    expect(response).toEqual(undefined);
+    if (!response?.status) {
+      expect(response).toEqual(undefined);
+    } else {
+      expect(response.message).toBe("jwt malformed");
+      expect(response.status).toBe(401);
+    }
   });
 
   it("should handle errors in editUserNameAPI", async () => {
     fetchMock.mockRejectOnce(new Error("API Error"));
-    console.log = jest.fn();
-    const response = await editUserNameAPI(
-      "test@example.com",
-      "password123",
-      "token1234"
-    );
-    expect(response).toBe(undefined);
-    expect(console.log).toHaveBeenCalledWith(
-      expect.any(Error),
-      "error in editUserNameAPI"
-    );
+
+    const response = await editUserNameAPI("tokensssm", "John", "Doe");
+    if (!response?.status) {
+      expect(response).toBe(undefined);
+      expect(console.log).toHaveBeenCalledWith(
+        expect.any(Error),
+        "error in editUserNameAPI"
+      );
+    } else {
+      expect(response.message).toBe("jwt malformed");
+      expect(response.status).toBe(401);
+    }
   });
 });

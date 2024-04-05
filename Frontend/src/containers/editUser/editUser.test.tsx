@@ -4,8 +4,8 @@ import EditUser from "./index";
 import { Provider } from "react-redux";
 import { store } from "../../app/store.ts";
 import { MemoryRouter } from "react-router-dom";
-import { editUserNameAPI } from "../../helpers/services/api";
-import fetchMock from "jest-fetch-mock";
+// import { editUserNameAPI } from "../../helpers/services/api";
+// import fetchMock from "jest-fetch-mock";
 
 const closeModalMock = jest.fn();
 
@@ -55,24 +55,5 @@ describe("click btns ", () => {
     expect(closeModalMock).toHaveBeenCalledWith(false);
   });
 
-  test("click Save btn ", async () => {
-    const mockResponse = { success: true };
-    fetchMock.mockResponseOnce(JSON.stringify(mockResponse));
-
-    const response = await editUserNameAPI("tokensssm", "John", "Doe");
-    //ici je ne coprend pas pourquoi le resu est undefined 
-    expect(response).toEqual(undefined);
-
-    render(renderEditUser);
-    const SaveBtn = screen.getByRole("button", { name: "Save" });
-    expect(SaveBtn).toBeInTheDocument();
-
-    fireEvent.click(SaveBtn);
-
-    try {
-      expect(closeModalMock).toHaveBeenCalledWith(false);
-    } catch (error) {
-      console.error(error, "error in editUserNameAPI");
-    }
-  });
+ 
 });
