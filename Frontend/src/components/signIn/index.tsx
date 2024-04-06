@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import { useDispatch, useSelector } from "react-redux";
 import { body, logout, selectUser } from "../../helpers/features/userSlice.ts";
 import { useNavigate, Link } from "react-router-dom";
@@ -6,6 +7,7 @@ import "./style.css";
 const SignIn = () => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
+  console.log("ici",user)
   const infos = useSelector(body);
   console.log(infos);
   const firstName = infos.payload?.user?.body?.body?.firstName;
@@ -37,7 +39,7 @@ const SignIn = () => {
         <i className="fa fa-user-circle"></i>
         <p className="user name">{firstName}</p>
       </Link>
-      <button  data-testid="logout" onClick={Singout} className="main-nav-item">
+      <button data-testid="logout" onClick={Singout} className="main-nav-item">
         <i className="fa fa-sign-out"></i>
         Sign out
       </button>

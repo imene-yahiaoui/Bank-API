@@ -27,13 +27,15 @@ const EditUser = ({ closeModal }: { closeModal: any }) => {
           body: ediUserName.body,
         })
       );
-    } else {
-      DisplayMessage(
-        "Server unavailable. Please try again later",
-        "linear-gradient(to right, #00b09b, #96c93d)"
-      );
     }
+else{
+  DisplayMessage(
+    "Server unavailable. Please try again later",
+    "linear-gradient(to right, #00b09b, #96c93d)"
+  );
+}
     closeModal(false);
+   
   }
 
   return (

@@ -20,8 +20,10 @@ const LoginForm = () => {
       DisplayMessage(
         "Error:Email and password cannot be empty",
         "linear-gradient(to right, #ff0000, #ff4500)"
-      );
+      ); 
     }
+else{
+
 
     const { status, body: resultBody } = await loginAPI(email, password);
 
@@ -61,6 +63,7 @@ const LoginForm = () => {
         setPassword("");
       }
     }
+  }
   }
 
   return (
