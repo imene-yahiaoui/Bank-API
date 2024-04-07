@@ -1,8 +1,18 @@
+/**
+ * EditUser Component
+ *
+ * EditUser component allows users to edit their first name and last name. It retrieves the current user's
+ *
+ * @param {Object} props - The props object containing a function to close the modal.
+ * @param {Function} props.closeModal - A function to close the modal.
+ *
+ * @return {JSX.Element} Returns a JSX element displaying a form to edit user information.
+ */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectBody,body} from "../../helpers/features/userSlice.ts";
+import { selectBody, body } from "../../helpers/features/userSlice.ts";
 import { useDispatch } from "react-redux";
 import { editUserNameAPI } from "../../helpers/services/api";
 import DisplayMessage from "../../components/displayMessage";
@@ -27,15 +37,13 @@ const EditUser = ({ closeModal }: { closeModal: any }) => {
           body: ediUserName.body,
         })
       );
+    } else {
+      DisplayMessage(
+        "Server unavailable. Please try again later",
+        "linear-gradient(to right, #00b09b, #96c93d)"
+      );
     }
-else{
-  DisplayMessage(
-    "Server unavailable. Please try again later",
-    "linear-gradient(to right, #00b09b, #96c93d)"
-  );
-}
     closeModal(false);
-   
   }
 
   return (

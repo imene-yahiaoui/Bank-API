@@ -1,3 +1,10 @@
+/**
+ * Header Component
+ *
+ * Header Component component displays the header navigation bar with the Argent Bank logo and a sign-in button.
+ *
+ * @return {JSX.Element} Returns a JSX element displaying the header navigation.
+ */
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/argentBankLogo.png";
 import SignIn from "../../components/signIn";

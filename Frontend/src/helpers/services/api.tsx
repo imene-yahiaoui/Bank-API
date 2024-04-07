@@ -1,5 +1,5 @@
 /**
- * loginAPI
+ * API Endpoints
  * @param {string} email - User email
  * @param {string} password - User password
  * @return {Promise<any>} result - Result of the login operation
@@ -22,8 +22,7 @@ export async function loginAPI(email: string, password: string) {
     return await result.json();
   } catch (e) {
     console.log(e, "error in the backend");
-    return !status
- 
+    return !status;
   }
 }
 

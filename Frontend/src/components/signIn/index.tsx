@@ -1,3 +1,11 @@
+/**
+ * SignIn Component
+ *
+ *  SignIn component handles user authentication by rendering a sign-in button when the user is not authenticated
+ * and a user profile link and sign-out button when the user is authenticated.
+ *
+ * @return {JSX.Element} Returns a JSX element displaying the sign-in button or user profile link and sign-out button.
+ */
 // eslint-disable-next-line
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,8 +19,6 @@ import "./style.css";
 const SignIn = () => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
-  // console.log("ici",user)
-  // const infos = useSelector(body);
   const infos = useSelector(selectBody);
   console.log("ici info", infos);
   const firstName = infos?.body?.firstName;

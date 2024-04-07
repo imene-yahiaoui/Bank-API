@@ -1,3 +1,11 @@
+/**
+ * Protected Login Route
+ *
+ * A component for protecting the login route.
+ * If a user is already logged in, it redirects to the profile page.
+ *
+ * @module ProtectedLoginRoute
+ */
 import React from "react";
 import { Navigate } from "react-router-dom";
 

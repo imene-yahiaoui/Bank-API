@@ -1,3 +1,11 @@
+/**
+ * LoginForm Component
+ *
+ * LoginForm  component displays a login form allowing users to enter their email and password.
+ *
+ * @return {JSX.Element} Returns a JSX element displaying the login form.
+ */
+
 /* eslint-disable no-inner-declarations */
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
@@ -12,7 +20,13 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  /**
+   * log Function
+   *
+   * Handles the form submission, performs validation, and dispatches actions based on the API responses.
+   *
+   * @param {React.SyntheticEvent} e - The synthetic event triggered by the form submission.
+   */
   async function log(e: React.SyntheticEvent) {
     e.preventDefault();
 
@@ -20,50 +34,47 @@ const LoginForm = () => {
       DisplayMessage(
         "Error:Email and password cannot be empty",
         "linear-gradient(to right, #ff0000, #ff4500)"
-      ); 
-    }
-else{
-
-
-    const { status, body: resultBody } = await loginAPI(email, password);
-
-    if (!status) {
-      DisplayMessage(
-        "Server unavailable. Please try again later",
-        "linear-gradient(to right, #00b09b, #96c93d)"
       );
-    } else if (status === 200) {
-      navigate("/profile");
+    } else {
+      const { status, body: resultBody } = await loginAPI(email, password);
 
-      localStorage.setItem("token", resultBody.token);
+      if (!status) {
+        DisplayMessage(
+          "Server unavailable. Please try again later",
+          "linear-gradient(to right, #00b09b, #96c93d)"
+        );
+      } else if (status === 200) {
+        navigate("/profile");
 
-      dispatch(
-        login({
-          user: { email, password },
-        })
-      );
+        localStorage.setItem("token", resultBody.token);
 
-      const token = localStorage.getItem("token");
-      const profile = await getProfileAPI(token);
-
-      if (profile.status === 200) {
         dispatch(
-          body({
-            body: profile.body,
+          login({
+            user: { email, password },
           })
         );
-      }
-    } else {
-      if (email.length !== 0 || password.length !== 0) {
-        DisplayMessage(
-          "Error in username or password",
-          "linear-gradient(to right, #ff0000, #ff4500)"
-        );
-        setEmail("");
-        setPassword("");
+
+        const token = localStorage.getItem("token");
+        const profile = await getProfileAPI(token);
+
+        if (profile.status === 200) {
+          dispatch(
+            body({
+              body: profile.body,
+            })
+          );
+        }
+      } else {
+        if (email.length !== 0 || password.length !== 0) {
+          DisplayMessage(
+            "Error in username or password",
+            "linear-gradient(to right, #ff0000, #ff4500)"
+          );
+          setEmail("");
+          setPassword("");
+        }
       }
     }
-  }
   }
 
   return (

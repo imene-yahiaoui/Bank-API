@@ -1,3 +1,11 @@
+/**
+ * Routes Path
+ *
+ * A component that defines the routes for the application using react-router-dom.
+ * It includes routes for Home, Login, Profile, and a NotFound page.
+ *
+ * @module RoutesPath
+ */
 import { Routes, Route } from "react-router-dom";
 import Home from "../../pages/home";
 import Login from "../../pages/login";
@@ -11,7 +19,6 @@ const RoutesPath = () => {
   type UserProps = { email: string; password: string };
 
   const user: UserProps | null = useSelector(selectUser);
-  console.log(user, "user");
 
   return (
     <div>

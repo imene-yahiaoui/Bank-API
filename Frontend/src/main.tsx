@@ -1,4 +1,10 @@
-// import ReactDom from "react-dom/client";
+/**
+ * Main rendering function
+ *
+ * Renders the main App component wrapped with BrowserRouter, Provider, and PersistGate.
+ *
+ * @returns {void}
+ */
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";

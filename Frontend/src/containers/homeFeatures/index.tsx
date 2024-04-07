@@ -1,4 +1,10 @@
-
+/**
+ * HomeFeatures Component
+ *
+ * HomeFeatures component displays a section showcasing the main features of Argent Bank.
+ *
+ * @return {JSX.Element} Returns a JSX element displaying the feature section.
+ */
 import FeatureSection from "../../components/featureSection";
 import Image1 from "../../assets/images/icon-chat.png";
 import Image2 from "../../assets/images/icon-money.png";
@@ -12,8 +18,7 @@ interface FeatureData {
   text: string;
 }
 
-
-const datas:FeatureData[] = [
+const datas: FeatureData[] = [
   {
     id: 1,
     img: Image1,
@@ -36,19 +41,19 @@ const datas:FeatureData[] = [
   },
 ];
 const HomeFeatures = () => {
-    return (
-      <section className="features">
-        <h2 className="sr-only">Features</h2>
-        {datas.map((data) => (
-          <FeatureSection
-            img={data.img}
-            title={data.title}
-            text={data.text}
-            key={data.id}
-          />
-        ))}
-      </section>
-    );
-  };
-  
-  export default HomeFeatures;
+  return (
+    <section className="features">
+      <h2 className="sr-only">Features</h2>
+      {datas.map((data) => (
+        <FeatureSection
+          img={data.img}
+          title={data.title}
+          text={data.text}
+          key={data.id}
+        />
+      ))}
+    </section>
+  );
+};
+
+export default HomeFeatures;

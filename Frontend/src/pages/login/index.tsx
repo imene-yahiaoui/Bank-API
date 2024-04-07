@@ -1,3 +1,10 @@
+/**
+ * Login Component
+ *
+ * Renders the login page with a LoginForm component to handle login functionality.
+ *
+ * @returns {JSX.Element} - Rendered component.
+ */
 import LoginForm from "../../containers/loginForm";
 import "./style.css";
 

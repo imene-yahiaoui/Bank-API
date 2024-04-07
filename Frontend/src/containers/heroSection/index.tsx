@@ -1,3 +1,11 @@
+/**
+ * HeroSection Component
+ *
+ * HeroSection component displays the hero section of the website, showcasing the benefits
+ * of opening a savings account with Argent Bank.
+ *
+ * @return {JSX.Element} Returns a JSX element displaying the hero section.
+ */
 import "./style.css";
 const HeroSection = () => {
   return (

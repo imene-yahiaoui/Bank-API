@@ -1,3 +1,10 @@
+/**
+ * User Slice
+ *
+ * Redux slice for managing user state including login, logout, and user body data.
+ *
+ * @module userSlice
+ */
 import { createSlice } from "@reduxjs/toolkit";
 
 type UserState = {

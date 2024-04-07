@@ -1,3 +1,11 @@
+/**
+ * UserName Component
+ *
+ * This component displays the user's first and last name fetched from the Redux store.
+ * It also provides an option to edit the user's name by opening the EditUser component.
+ *
+ * @return {JSX.Element} Returns a JSX element displaying the user's name and an edit button.
+ */
 import "./style.css";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
