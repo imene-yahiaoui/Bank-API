@@ -1,16 +1,21 @@
 // eslint-disable-next-line
 import { useDispatch, useSelector } from "react-redux";
-import { body, logout, selectUser } from "../../helpers/features/userSlice.ts";
+import {
+  logout,
+  selectUser,
+  selectBody,
+} from "../../helpers/features/userSlice.ts";
 import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const user = useSelector(selectUser);
-  console.log("ici",user)
-  const infos = useSelector(body);
-  console.log(infos);
-  const firstName = infos.payload?.user?.body?.body?.firstName;
+  // console.log("ici",user)
+  // const infos = useSelector(body);
+  const infos = useSelector(selectBody);
+  console.log("ici info", infos);
+  const firstName = infos?.body?.firstName;
   const dispatch = useDispatch();
 
   //finction for SignIn

@@ -2,7 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { body } from "../../helpers/features/userSlice.ts";
+import { selectBody,body} from "../../helpers/features/userSlice.ts";
 import { useDispatch } from "react-redux";
 import { editUserNameAPI } from "../../helpers/services/api";
 import DisplayMessage from "../../components/displayMessage";
@@ -10,9 +10,9 @@ import DisplayMessage from "../../components/displayMessage";
 import "./style.css";
 
 const EditUser = ({ closeModal }: { closeModal: any }) => {
-  const infos = useSelector(body);
-  const firstNameDefult = infos.payload?.user?.body?.body?.firstName;
-  const lastNameDefult = infos.payload?.user?.body?.body?.lastName;
+  const infos = useSelector(selectBody);
+  const firstNameDefult = infos?.body?.firstName;
+  const lastNameDefult = infos.body?.lastName;
   const [firstName, setFirstName] = useState(firstNameDefult);
   const [lastName, setLastName] = useState(lastNameDefult);
   const token = localStorage.getItem("token");

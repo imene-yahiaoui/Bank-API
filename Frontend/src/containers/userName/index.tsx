@@ -1,13 +1,14 @@
 import "./style.css";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { body } from "../../helpers/features/userSlice.ts";
+import { selectBody } from "../../helpers/features/userSlice.ts";
 import EditUser from "../editUser";
 
 const UserName = () => {
-  const infos = useSelector(body);
-  const firstName = infos.payload?.user?.body?.body?.firstName;
-  const lastName = infos.payload?.user?.body?.body?.lastName;
+  const infos = useSelector(selectBody);
+
+  const firstName = infos?.body?.firstName;
+  const lastName = infos?.body?.lastName;
   const [open, setOpen] = useState(false);
 
   function edit(e: React.SyntheticEvent) {
@@ -24,7 +25,11 @@ const UserName = () => {
         {`${firstName} ${lastName} ! `}
       </h1>
 
-      <button onClick={edit} className="edit-button" data-testid="submitEditName">
+      <button
+        onClick={edit}
+        className="edit-button"
+        data-testid="submitEditName"
+      >
         Edit Name
       </button>
     </div>
