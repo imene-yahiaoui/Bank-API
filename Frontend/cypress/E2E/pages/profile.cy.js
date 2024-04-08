@@ -64,12 +64,10 @@ describe("Edit User Information", () => {
   });
   it("should allow user to change name and save", () => {
     cy.get(editBtn).click();
-    cy.get(FirstNameInput).invoke("val", "");
-    cy.get(LastNameInput).invoke("val", "");
-    cy.get(FirstNameInput).type("salema");
-    cy.get(LastNameInput).type("kareem");
+    cy.get(FirstNameInput).clear().type("selma");
+    cy.get(LastNameInput).clear().type("kareem");
     cy.get(saveBtn).click();
     cy.get(userFirstName).should("be.visible");
-    cy.get(userFirstName).should("contain", "salema");
+    cy.get(userFirstName).should("contain", "selma");
   });
 });
