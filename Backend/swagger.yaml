@@ -114,6 +114,8 @@ paths:
           description: Internal Server Error
   /user/transactionsChecking:
     get:
+      security:
+        - Bearer: []
       tags:
         - User transactions Checking
       summary: TransactionsChecking
@@ -143,6 +145,10 @@ paths:
               type: string
             note:
               type: string
+        "400":
+          description: Invalid Fields
+        "401":
+          description: Unauthorized
         "500":
           description: Unexpected Error
     post:
@@ -206,6 +212,8 @@ paths:
           description: Bad Request
   /user/transactionsCheckingCurrentMonth:
     get:
+      security:
+        - Bearer: []
       tags:
         - User transactions Checking Current Month
       summary: Transactions for the current month
@@ -235,6 +243,10 @@ paths:
               type: string
             note:
               type: string
+        "400":
+          description: Invalid Fields
+        "401":
+          description: Unauthorized
         "500":
           description: Unexpected Error
 
@@ -323,6 +335,8 @@ paths:
 
   /user/transactionsSavings:
     get:
+      security:
+        - Bearer: []
       tags:
         - User transactions Savings
       summary: TransactionsSavings
@@ -350,6 +364,10 @@ paths:
               type: string
             note:
               type: string
+        "401":
+          description: Unauthorized
+        "400":
+          description: Bad Request
         "500":
           description: Unexpected Error
     post:
@@ -414,6 +432,8 @@ paths:
           description: Bad Request
   /user/transactionsSavingsCurrentMonth:
     get:
+      security:
+        - Bearer: []
       tags:
         - User transactions Savings Current Month
       summary: TransactionsSavings for the current month
@@ -441,6 +461,10 @@ paths:
               type: string
             note:
               type: string
+        "401":
+          description: Unauthorized
+        "400":
+          description: Bad Request
         "500":
           description: Unexpected Error
 
@@ -527,6 +551,8 @@ paths:
 
   /user/transactionsCreditCard:
     get:
+      security:
+        - Bearer: []
       tags:
         - User transactions Credit Card
       description: Returns all transactions
@@ -553,6 +579,10 @@ paths:
               type: string
             note:
               type: string
+        "401":
+          description: Unauthorized
+        "400":
+          description: Bad Request
         "500":
           description: Unexpected Error
     post:
@@ -616,6 +646,8 @@ paths:
           description: Bad Request
   /user/transactionsCreditCardCurrentMonth:
     get:
+      security:
+        - Bearer: []
       tags:
         - User transactions Credit Card CurrentMonth
       description: Returns all transactions
@@ -642,6 +674,10 @@ paths:
               type: string
             note:
               type: string
+        "401":
+          description: Unauthorized
+        "400":
+          description: Bad Request
         "500":
           description: Unexpected Error
   /user/transactionsCreditCard/{id}:

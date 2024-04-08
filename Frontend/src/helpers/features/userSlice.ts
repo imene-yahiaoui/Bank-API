@@ -10,9 +10,10 @@ import { createSlice } from "@reduxjs/toolkit";
 type UserState = {
   user: { email: string; password: string } | null;
   body: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    body: any | null;
     email: string;
-    lastname: string;
-    firstname: string;
+    firstName: string;
     lastName: string;
     userName: string;
     createdAt: string;

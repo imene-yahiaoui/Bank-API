@@ -22,7 +22,7 @@ import "./style.css";
 const EditUser = ({ closeModal }: { closeModal: any }) => {
   const infos = useSelector(selectBody);
   const firstNameDefult = infos?.body?.firstName;
-  const lastNameDefult = infos.body?.lastName;
+  const lastNameDefult = infos?.body?.lastName;
   const [firstName, setFirstName] = useState(firstNameDefult);
   const [lastName, setLastName] = useState(lastNameDefult);
   const token = localStorage.getItem("token");
