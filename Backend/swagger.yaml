@@ -123,8 +123,8 @@ paths:
           description: Returns an array of all transactions for the current month
           schema:
             $ref: "#/definitions/BankResponse"
-        "400":
-          description: Invalid Fields
+        "500":
+          description: Internal Server Error
   /user/transactionsChecking/{id}:
     get:
       tags:
@@ -142,8 +142,10 @@ paths:
           description: Returns an array of all transactions
           schema:
             $ref: "#/definitions/BankResponse"
-        "400":
-          description: Invalid Fields
+        "404":
+          description: Transaction not found
+        "500":
+          description: Internal Server Error
   /user/transactionsChecking/{id}/category:
     patch:
       security:
@@ -261,6 +263,10 @@ paths:
           description: Transaction deleted successfully
         "400":
           description: Invalid Fields or Transaction ID
+        "404":
+          description: Transaction not found
+        "500":
+          description: Internal Server Error
 securityDefinitions:
   Bearer:
     type: apiKey
