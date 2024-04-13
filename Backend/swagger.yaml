@@ -259,12 +259,6 @@ paths:
       responses:
         "204":
           description: Transaction deleted successfully
-          schema:
-            type: object
-            properties:
-              note:
-                type: string
-                default: ""
         "400":
           description: Invalid Fields or Transaction ID
 securityDefinitions:
