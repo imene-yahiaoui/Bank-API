@@ -112,19 +112,6 @@ paths:
           description: Invalid Fields
         "500":
           description: Internal Server Error
-  /user/transactionsChecking:
-    get:
-      tags:
-        - User transactions Checking
-      summary: TransactionsChecking
-      description: Returns all transactions
-      responses:
-        "200":
-          description: Returns an array of all transactions
-          schema:
-            $ref: "#/definitions/BankResponse"
-        "400":
-          description: Invalid Fields
   /user/transactionsCheckingCurrentMonth:
     get:
       tags:
@@ -134,6 +121,25 @@ paths:
       responses:
         "200":
           description: Returns an array of all transactions for the current month
+          schema:
+            $ref: "#/definitions/BankResponse"
+        "400":
+          description: Invalid Fields
+  /user/transactionsChecking/{id}:
+    get:
+      tags:
+        - User transactions Checking
+      summary: TransactionsChecking
+      description: Returns all transactions
+      parameters:
+        - name: id
+          in: path
+          description: ID of the transaction to update
+          required: true
+          type: integer
+      responses:
+        "200":
+          description: Returns an array of all transactions
           schema:
             $ref: "#/definitions/BankResponse"
         "400":
@@ -196,7 +202,7 @@ paths:
           type: string
         - name: id
           in: path
-          description: ID of the transaction to update
+          description: ID of the transaction to note update
           required: true
           type: integer
         - in: body
@@ -222,40 +228,13 @@ paths:
           description: Transaction not found
         "500":
           description: Internal Server Error
-  /user/transactionsSavings:
-    get:
-      tags:
-        - User transactions Savings
-      summary: TransactionsSavings
-      description: Returns all transactions
-      responses:
-        "200":
-          description: Returns an array of all transactions
-          schema:
-            $ref: "#/definitions/BankResponse"
-        "400":
-          description: Invalid Fields
-  /user/transactionsSavingsCurrentMonth:
-    get:
-      tags:
-        - User transactions Savings
-      summary: TransactionsSavings
-      description: Returns all transactions for the current month
-      responses:
-        "200":
-          description: Returns an array of all transactions for the current month
-          schema:
-            $ref: "#/definitions/BankResponse"
-        "400":
-          description: Invalid Fields
-  /user/transactionsSavings/{id}/category:
-    patch:
+    delete:
       security:
         - Bearer: []
       tags:
-        - User transactions Savings
-      summary: Update Transaction Category
-      description: Update the category of a transaction by ID
+        - User transactions Checking
+      summary: Delete Transaction
+      description: Deletes a specific note transaction by ID
       parameters:
         - in: header
           name: Authorization
@@ -264,184 +243,30 @@ paths:
           type: string
         - name: id
           in: path
-          description: ID of the transaction to update
+          description: ID of the transaction to note delete
           required: true
           type: integer
         - in: body
           name: body
-          description: New category for the transaction
-          required: true
-          schema:
-            type: object
-            properties:
-              category:
-                type: string
-      responses:
-        "200":
-          description: Transaction category updated successfully
-          schema:
-            type: object
-            properties:
-              category:
-                type: string
-        "400":
-          description: Invalid Fields
-        "404":
-          description: Transaction not found
-        "500":
-          description: Internal Server Error
-  /user/transactionsSavings/{id}/note:
-    patch:
-      security:
-        - Bearer: []
-      tags:
-        - User transactions Savings
-      summary: Update Transaction note
-      description: Update the note of a transaction by ID
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-        - name: id
-          in: path
-          description: ID of the transaction to update
-          required: true
-          type: integer
-        - in: body
-          name: body
-          description: New note for the transaction
+          description: delet note body
           required: true
           schema:
             type: object
             properties:
               note:
                 type: string
+                default: ""
       responses:
-        "200":
-          description: Transaction note updated successfully
+        "204":
+          description: Transaction deleted successfully
           schema:
             type: object
             properties:
               note:
                 type: string
+                default: ""
         "400":
-          description: Invalid Fields
-        "404":
-          description: Transaction not found
-        "500":
-          description: Internal Server Error
-  /user/transactionsCreditCard:
-    get:
-      tags:
-        - User transactions Credit Card
-      summary: TransactionsCredit Card
-      description: Returns all transactions
-      responses:
-        "200":
-          description: Returns an array of all transactions
-          schema:
-            $ref: "#/definitions/BankResponse"
-        "400":
-          description: Invalid Fields
-  /user/transactionsCreditCardCurrentMonth:
-    get:
-      tags:
-        - User transactions Credit Card
-      summary: TransactionsCredit Card
-      description: Returns all transactions for the current month
-      responses:
-        "200":
-          description: Returns an array of all transactions for the current month
-          schema:
-            $ref: "#/definitions/BankResponse"
-        "400":
-          description: Invalid Fields
-  /user/transactionsCreditCard/{id}/category:
-    patch:
-      security:
-        - Bearer: []
-      tags:
-        - User transactions Credit Card
-      summary: Update Transaction Category
-      description: Update the category of a transaction by ID
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-        - name: id
-          in: path
-          description: ID of the transaction to update
-          required: true
-          type: integer
-        - in: body
-          name: body
-          description: New category for the transaction
-          required: true
-          schema:
-            type: object
-            properties:
-              category:
-                type: string
-      responses:
-        "200":
-          description: Transaction category updated successfully
-          schema:
-            type: object
-            properties:
-              category:
-                type: string
-        "400":
-          description: Invalid Fields
-        "404":
-          description: Transaction not found
-        "500":
-          description: Internal Server Error
-  /user/transactionsCreditCard/{id}/note:
-    patch:
-      security:
-        - Bearer: []
-      tags:
-        - User transactions Credit Card
-      summary: Update Transaction note
-      description: Update the note of a transaction by ID
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-        - name: id
-          in: path
-          description: ID of the transaction to update
-          required: true
-          type: integer
-        - in: body
-          name: body
-          description: New note for the transaction
-          required: true
-          schema:
-            type: object
-            properties:
-              note:
-                type: string
-      responses:
-        "200":
-          description: Transaction note updated successfully
-          schema:
-            type: object
-            properties:
-              note:
-                type: string
-        "400":
-          description: Invalid Fields
-        "404":
-          description: Transaction not found
-        "500":
-          description: Internal Server Error
+          description: Invalid Fields or Transaction ID
 securityDefinitions:
   Bearer:
     type: apiKey
